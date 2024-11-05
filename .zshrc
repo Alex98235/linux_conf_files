@@ -3,13 +3,11 @@ export ZSH="$HOME/.oh-my-zsh"
 
 
 # Path Variables
-# zig (install separately)
+# zig
 path+=("/home/alex/Zig/zig-linux-x86_64-0.14.0-dev.244+0d79aa017")
-# zls (install separately)
+# zls
 path+=("/home/alex/zls/zig-out/bin")
-
 export PATH
-
 autoload -U compinit; compinit
 
 
@@ -78,3 +76,7 @@ autoload -Uz compinit
 compinit
 _comp_options+=(globdots)
 # End of lines added by compinstall
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
