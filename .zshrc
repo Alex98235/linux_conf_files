@@ -7,17 +7,20 @@ export ZSH="$HOME/.oh-my-zsh"
 path+=("/home/alex/Zig/zig-linux-x86_64-0.14.0-dev.244+0d79aa017")
 # zls
 path+=("/home/alex/zls/zig-out/bin")
+#oh my posh, etc...
+path+=("/home/alex/.local/bin/")
+
 export PATH
 autoload -U compinit; compinit
 
 
 #start zsh in tmux session
-ZSH_TMUX_AUTOSTART=true
+# ZSH_TMUX_AUTOSTART=true
 
 plugins=(
    git 
    zsh-syntax-highlighting 
-   tmux
+   # tmux
    zsh-autosuggestions
    you-should-use
    shellfirm
@@ -57,11 +60,11 @@ source $ZSH/oh-my-zsh.sh
  if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='vim'
  else
-   export EDITOR='mvim'
+   export EDITOR='hx' # Helix-Editor
  fi
 
-
-alias pf="fdfind --type f --hidden --exclude .git | fzf-tmux -p | xargs nvim"
+# tmux required
+# alias pf="fdfind --type f --hidden --exclude .git | fzf-tmux -p | xargs nvim"
 
 
 eval "$(starship init zsh)"
@@ -77,6 +80,11 @@ compinit
 _comp_options+=(globdots)
 # End of lines added by compinstall
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+# https://zellij.dev/documentation/installation
+eval "$(oh-my-posh init zsh --config ~/ohmyposhconfigs/tonybaloneycustom.omp.json)"
+eval "$(zellij setup --generate-auto-start zsh)"
