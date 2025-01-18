@@ -1,29 +1,25 @@
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+# For zellij split panes, which for some reason look at the SHELL variable
+# instead of whatever the previous pane is running as shell
+export SHELL="zsh" 
+
+# Creature comfort
+alias hx=helix
 
 # Path Variables
-# zig
-path+=("/home/alex/Zig/zig-linux-x86_64-0.14.0-dev.244+0d79aa017")
-# zls
-path+=("/home/alex/zls/zig-out/bin")
 #oh my posh, etc...
 path+=("/home/alex/.local/bin/")
 
 export PATH
 autoload -U compinit; compinit
 
-
-#start zsh in tmux session
-# ZSH_TMUX_AUTOSTART=true
-
 plugins=(
    git 
-   zsh-syntax-highlighting 
-   # tmux
+   zsh-syntax-highlighting
    zsh-autosuggestions
    you-should-use
-   shellfirm
 )
 
 
@@ -55,19 +51,12 @@ ZSH_HIGHLIGHT_STYLES[bracket-level-4]='fg=magenta,bold'
 
 source $ZSH/oh-my-zsh.sh
 
-
 # Preferred editor for local and remote sessions
  if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='vim'
  else
-   export EDITOR='hx' # Helix-Editor
+   export EDITOR='helix'
  fi
-
-# tmux required
-# alias pf="fdfind --type f --hidden --exclude .git | fzf-tmux -p | xargs nvim"
-
-
-eval "$(starship init zsh)"
 
 # The following lines were added by compinstall
 
@@ -79,11 +68,6 @@ autoload -Uz compinit
 compinit
 _comp_options+=(globdots)
 # End of lines added by compinstall
-
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 
 # https://zellij.dev/documentation/installation
 eval "$(oh-my-posh init zsh --config ~/ohmyposhconfigs/tonybaloneycustom.omp.json)"
